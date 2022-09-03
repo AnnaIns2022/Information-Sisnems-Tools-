@@ -10,7 +10,8 @@
 платформа для размещения кода для контроля версий и совместной работы
 над одним проектов из любого места. С помощью GitHub можно создавать,
 распространять и поддерживать программное обеспечение.
-'// basic_arith.cpp
+
+`// basic_arith.cpp
 #include <iostream>
 #include <cstdlib>
 
@@ -27,6 +28,7 @@ int main()
   cout << "(a + 2b) (a - 2b) = ";
   cout << (a + 2*b) * (a - 2*b) << endl;
   return EXIT_SUCCESS;
-}'
+}`
+  
 ![Инструментальные средства информационных систем](https://znanium.com/)
 ![GitHub](https://github.com/AnnaIns2022/Information-Sisnems-Tools-/blob/main/i.jpeg?raw=true)
