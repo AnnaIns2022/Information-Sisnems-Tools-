@@ -13,6 +13,7 @@
 '// basic_arith.cpp
 #include <iostream>
 #include <cstdlib>
+
 int main()
 {
   using namespace std;
@@ -27,6 +28,4 @@ int main()
   cout << (a + 2*b) * (a - 2*b) << endl;
   return EXIT_SUCCESS;
 }'
-![Инструментальные средства информационных систем]([https://mail.ru/](https://www.youtube.com/channel/UC7c3Kb6jYCRj4JOHHZTxKsQ))
-  
-![GitHub](https://github.com/AnnaIns2022/Information-Sisnems-Tools-/blob/main/i.jpeg?raw=true) 
+
