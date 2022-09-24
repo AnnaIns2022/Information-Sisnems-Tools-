@@ -1,0 +1,3 @@
+print(int(5.7))
+print(int(-5.7))
+print(3**39-int(float(3**39)))
