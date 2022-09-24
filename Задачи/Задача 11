@@ -1,0 +1,6 @@
+X, Y = int(input()), int(input())
+Z = X * Y
+for i in range(X * Y, 0, -1):
+    if i % X == 0 and i % Y == 0:
+        Z = i
+print(Z)
