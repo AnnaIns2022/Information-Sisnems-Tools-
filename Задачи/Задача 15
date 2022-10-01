@@ -1,0 +1,6 @@
+import time
+from tkinter import messagebox
+
+if __name__ == '__main__':
+time.sleep(600)
+messagebox.showinfo('Userful Puthon','Вы долго смотрели в монитор,теперь посмотрите в окно')
