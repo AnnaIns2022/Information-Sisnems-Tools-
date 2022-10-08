@@ -1,0 +1,26 @@
+Задание 1
+docker pull --help
+docker run --help
+docker exec --help
+
+docker run -p 3306:3306 --name my-mysql -e MYSQL_ROOT_PASSWORD=pass -d mysql
+docker ps
+docker pull redis:latest
+
+Задание 2
+docker run --name my-mongo -d mongo:5.0
+docker run -p 3306:3306 --name my-mongo -d mongo:5.0
+
+Задание 2.3
+docker exec -it my-redis redis-cli
+ping
+exit
+
+docker exec -it my-mysql mysql -uroot -ppass
+help
+quit
+
+Задание 3
+docker exec -it my-mongo mongo 
+help
+exit
