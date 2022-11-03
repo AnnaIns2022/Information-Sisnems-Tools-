@@ -1,0 +1,109 @@
+use my_db;
+show tables;
+mysql> show databases;
+mysql> use my_db;
+mysql> show tables;
+mysql> show create table user_private_message;
+mysql> select first_name Name, last_name "Family name" from user;
+mysql> select first_name Name, last_name "Family name" from user where is_active=true;
+
+2.
+mysql> select name Name from discussion_group where approve_required=true;
+mysql> select first_name Name, last_name "Family name" from user where first_name like "A%Y";
+
+3.
+mysql> select greatest(message_id, user_from_id, user_to_id) "ID", 
+date(read_time) "READ", date(send_time) SEND, message_text TEXT 
+from user_private_message where send_time between '2020-11-01' and '2020-11-30' 
+and message_text like'A%' and read_time < adddate(send_time, interval +10 day);
+
+4.
+mysql> select min(joined_time),max(approved_time), count(*) from users_t
+o_discussion_groups where approved=1;
+
+5.
+mysql> select user_id, registration_time from user order by registration_time desc limit 20;
+
+6.
+mysql> with groups_with_approve as (select * from discussion_group where approve_required=1), new_groups as
+(select * from groups_with_approve where creation_time>'2020-01-01') select * from  new_groups;
+
+7.
+mysql> select admin_user_id admin_id, "discussion_group" TableName from discussion_group union select 
+user_from_id user_id,"user_private_message" TableName from user_private_message;
+
+8.
+mysql> select user_from_id, count(*) as cnt,
+    -> date(send_time)
+    -> from user_private_message
+    -> group by user_from_id, send_time having cnt<2;
+
+
+9.   
+> use my_db
+switched to db my_db
+> show collections
+posts
+users
+
+10.
+> db.posts.find({"topics": "as", "author":/.*example.ru.*/, "score": {$gt: 100}})
+
+11.
+> db.posts.insertMany([{"creation_date" : new ISODate(), "author" : "skbx@example.com", "topics" : ["mongodb"]},
+ {"creation_date" : ISODate('2021-31-12T00:00:00Z'), "author" : "skbx@example.ru"}]);
+
+12.
+> db.users.aggregate( [ {$match : {"visits" : {$gt : 300}}}, {$project: {karma : "$karma", first_name :
+ {$substr : ["$first_name", 0, 1]}}}, {$group : {_id : "$first_name", sum : {$sum : "$karma"}}}])
+
+13.
+> set index "index precalculated content"
+> exists index
+> ttl index
+> set index "index precalculated content" ex 120
+> persist index
+
+14.
+*
+> zadd ratings 10 mysql
+> zadd ratings 20 postgresql
+> zadd ratings 30 mongodb
+> zadd ratings 40 redis
+
+> zrange ratings 0 10 rev withscores - вывод
+1) "redis"
+2) "40"
+3) "mongodb"
+4) "30"
+5) "postgresql"
+6) "20"
+7) "mysql"
+8) "10"
+
+*
+> zadd ratings XX 15 mysql
+
+> zrange ratings 0 10 rev withscores - вывод
+1) "redis"
+2) "40"
+3) "mongodb"
+4) "30"
+5) "postgresql"
+6) "20"
+7) "mysql"
+8) "15"
+
+*
+> zpopmax ratings
+1) "redis"
+2) "40"
+
+*
+> zrank ratings mysql
+(integer) 0
+
+15.
+> psubscribe events*
+> publish events42 "Hello there"
+
