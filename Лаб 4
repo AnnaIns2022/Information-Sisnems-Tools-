@@ -33,10 +33,9 @@ mysql> select admin_user_id admin_id, "discussion_group" TableName from discussi
 user_from_id user_id,"user_private_message" TableName from user_private_message;
 
 8.
-mysql> select user_from_id, count(*) as cnt,
-    -> date(send_time)
-    -> from user_private_message
-    -> group by user_from_id, send_time having cnt<2;
+mysql> with cntsum as (select date(send_time) time ,  user_from_id, count(1) as cnt from 
+user_private_message group by date(send_time), user_from_id)
+ select count(*) user, sum(cnt) message, time from cntsum group by time having user=message;
 
 
 9.   
@@ -82,7 +81,7 @@ users
 8) "10"
 
 *
-> zadd ratings XX 15 mysql
+> zadd ratings XX 25 mysql
 
 > zrange ratings 0 10 rev withscores - вывод
 1) "redis"
@@ -92,7 +91,7 @@ users
 5) "postgresql"
 6) "20"
 7) "mysql"
-8) "15"
+8) "25"
 
 *
 > zpopmax ratings
@@ -101,7 +100,7 @@ users
 
 *
 > zrank ratings mysql
-(integer) 0
+(integer) 1
 
 15.
 > psubscribe events*
