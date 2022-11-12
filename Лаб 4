@@ -81,7 +81,7 @@ users
 8) "10"
 
 *
-> zadd ratings XX 25 mysql
+> zadd ratings INCR 15 mysql
 
 > zrange ratings 0 10 rev withscores - вывод
 1) "redis"
