@@ -1,0 +1,52 @@
+1.
+s = str(input ('Введите слово: '))
+a = s[::1]
+if s == a:
+    print(s, "Да, это палиндром")
+else:
+    print (s, "Нет, это не палиндром")
+
+2.
+print('Введите матрицу:\n')
+n = []
+while True:
+    k = [i for i in input().split()]
+    if k[0] == 'end':
+        break
+    else:
+        n.append([int(i) for i in k])
+
+for i in n:
+    m = min(i)
+    print(m)
+
+3.
+from collections import Counter
+txt = input('Введите слова: ')
+word_list = []
+
+for word in txt.split():
+    clear_word = " "
+    for letter in word:
+        if letter.isalpha():
+            clear_word += letter.lower()
+    word_list.append(clear_word)
+print (Counter(word_list))
+
+4.
+import pymysql
+import cryptography
+connect = pymysql.connect(host="127.0.0.1",
+                          user="root",
+                          password="pass",
+                          db="my_db")
+if connect:
+    print('подключено')
+else:
+    print('не подключено')
+sql = "select first_name, last_name, date_of_birth from user where year(date_of_birth)=%s"
+year = input('Введите год:\n ')
+cur = connect.cursor()
+cur.execute(sql, year)
+for rec in cur:
+    print(rec[0], rec[1], rec[2])
