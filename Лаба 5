@@ -21,17 +21,16 @@ for i in n:
     print(m)
 
 3.
-from collections import Counter
-txt = input('Введите слова: ')
-word_list = []
-
-for word in txt.split():
-    clear_word = " "
-    for letter in word:
-        if letter.isalpha():
-            clear_word += letter.lower()
-    word_list.append(clear_word)
-print (Counter(word_list))
+txt = []
+txt = input('Введите слова: ').lower().split()
+a = {}
+for i in range(len(txt)):
+    if txt[i] in a:
+        a[txt[i]] += 1
+    else:
+        a[txt[i]] = 1
+for key, value in a.items():
+    print(key, value)
 
 4.
 import pymysql
